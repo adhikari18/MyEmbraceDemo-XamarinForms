@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+		xmlns="http://xamarin.com/schemas/2014/forms" 
+		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+		x:Class="MyEmbraceDemo.Views.DetailsPage"
+		xmlns:design="clr-namespace:MyEmbraceDemo;assembly=MyEmbraceDemo"
+        xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+        BindingContext="{x:Static design:ViewModelLocator.DetailsViewModel}"
+        Title="{Binding Pet.Name}">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <StackLayout Padding="10" Margin="5" BackgroundColor="White">
+                    <controls:CircleImage 
+                        BorderColor="Purple"
+                        BorderThickness="1"
+                        HeightRequest="225"
+                        WidthRequest="225"
+                        HorizontalOptions="CenterAndExpand"
+                        Aspect="AspectFill"
+                        Source="{Binding Pet.Image}"/>
+                    <Label Text="{Binding Pet.Name}" FontAttributes="Bold" FontSize="Large"/>
+                    <Label Text="{Binding Pet.Age}" FontSize="Small"/>
+                    <Label Text="{Binding Pet.Sex}" FontSize="Small"/>
+                    <Label Text="{Binding Pet.Breed}" FontSize="Small"/>
+                    <Label Text="{Binding Pet.Species}" FontSize="Small"/>
+                </StackLayout>
+                <StackLayout Padding="10" Margin="5" BackgroundColor="White">
+                    <Label Text="Plan Information" FontAttributes="Bold" FontSize="Large"/>
+                    <Label Text="Plan type :               Full Coverage" FontSize="Small"/>
+                    <Label Text="Annual Maximum :           $15,000 " FontSize="Small"/>
+                    <Label Text="Annual Deductible :         $500" FontSize="Small"/>
+                    <Label Text="Prescription Coverage :       No" FontSize="Small"/>
+                    <Label Text="Wellness Rewards :             None" FontSize="Small"/>
+                </StackLayout>
+                <Button Text="Submit claim documents" Clicked="Button_Clicked" BackgroundColor="#FDAC07">                   
+                </Button>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

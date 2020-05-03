@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+        xmlns="http://xamarin.com/schemas/2014/forms" 
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+        x:Class="MyEmbraceDemo.Views.PetsPage"
+        xmlns:design="clr-namespace:MyEmbraceDemo;assembly=MyEmbraceDemo"
+        xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+		BindingContext="{x:Static design:ViewModelLocator.PetsViewModel}"
+        Title="Pet Info">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout BackgroundColor="White" Margin="5" Padding="10">                
+                <Label>
+                    Policy  :   Your policy EP0011-1178 from Embrace runs from 03/10/2017 to 03/09/2018
+                </Label>
+                <Label>
+                    Pets  :   You have 3 active pets, Fluffy, Ginger, Jackie.
+                </Label>
+            </StackLayout>
+            <ListView ItemsSource="{Binding Pets}"
+                      ItemTapped="ListView_ItemTapped"
+                    HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="10" ColumnSpacing="10" Margin="5" BackgroundColor="White" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <controls:CircleImage 
+                                    Grid.Column="0"
+										BorderColor="Purple"
+										BorderThickness="0"
+										HeightRequest="90"
+										HorizontalOptions="CenterAndExpand"
+										VerticalOptions="CenterAndExpand"
+										Aspect="AspectFill"
+                                        WidthRequest="90"
+                                        Grid.RowSpan="5"
+                                       Source="{Binding Image}"/>
+                                <Label Grid.Column="1"
+                                       Text="{Binding Name}"
+                                       FontSize="Large"
+									   VerticalOptions="End"/>
+                                <Label Grid.Column="1"
+                                       Grid.Row="1"
+                                       VerticalOptions="Start"
+                                       FontSize="Small"
+                                       Text="{Binding Age}"/>
+                                <Label Grid.Column="1"
+                                       Grid.Row="2"
+                                       VerticalOptions="Start"
+                                       FontSize="Small"
+                                       Text="{Binding Sex}"/>
+                                <Label Grid.Column="1"
+                                       Grid.Row="3"
+                                       VerticalOptions="Start"
+                                       FontSize="Small"
+                                       Text="{Binding Breed}"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
